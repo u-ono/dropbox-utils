@@ -7,6 +7,7 @@ authors = ["Yu Ono <ono.generic@gmail.com>"]
 [tool.poetry.dependencies]
 python = "^3.7"
 dropbox = "^11.10.0"
+notipy = {git = "https://github.com/u-ono/notipy.git"}
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

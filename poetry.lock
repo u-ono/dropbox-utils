@@ -90,6 +90,24 @@ optional = false
 python-versions = ">=3.5"
 
 [[package]]
+name = "notipy"
+version = "0.1.0"
+description = ""
+category = "main"
+optional = false
+python-versions = "^3.7"
+develop = false
+
+[package.dependencies]
+requests = "^2.24.0"
+
+[package.source]
+type = "git"
+url = "https://github.com/u-ono/notipy.git"
+reference = "master"
+resolved_reference = "c091aa8f0c3d232877434ba98f0bb2820f893cea"
+
+[[package]]
 name = "packaging"
 version = "20.9"
 description = "Core utilities for Python packages"
@@ -243,7 +261,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=1.2.3)", "pytest-flake8", "pyt
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "72453748b8b8d5571e4f88dc2c6c74875b67c5c66356d489a3198471e5d06b77"
+content-hash = "6d8634b5629d872dc5d414ab304c2b0941f9c956a3c34b48c00671b8cd6225fb"
 
 [metadata.files]
 atomicwrites = [
@@ -282,6 +300,7 @@ more-itertools = [
     {file = "more-itertools-8.8.0.tar.gz", hash = "sha256:83f0308e05477c68f56ea3a888172c78ed5d5b3c282addb67508e7ba6c8f813a"},
     {file = "more_itertools-8.8.0-py3-none-any.whl", hash = "sha256:2cf89ec599962f2ddc4d568a05defc40e0a587fbc10d5989713638864c36be4d"},
 ]
+notipy = []
 packaging = [
     {file = "packaging-20.9-py2.py3-none-any.whl", hash = "sha256:67714da7f7bc052e064859c05c595155bd1ee9f69f76557e21f051443c20947a"},
     {file = "packaging-20.9.tar.gz", hash = "sha256:5b327ac1320dc863dca72f4514ecc086f31186744b84a230374cc1fd776feae5"},
