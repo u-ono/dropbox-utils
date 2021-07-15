@@ -1,4 +1,5 @@
 import os
+import re
 import glob
 import dropbox
 import subprocess
@@ -60,7 +61,7 @@ class DropboxUtils:
             if that_path in that_paths:
                 subprocess.check_call(f'rm -rf {this_path}', shell=True)
 
-    def syncdown(self, that_dir, this_dir):
+    def syncdown(self, that_dir, this_dir, ignore_ext=False):
         this_dir = os.path.expanduser(this_dir)
         that_files = self.list_files(that_dir)
         that_paths = [f.path_display for f in that_files]
@@ -68,10 +69,20 @@ class DropboxUtils:
         this_paths = glob.glob(os.path.join(this_dir, '*'))
         for that_path in that_paths:
             this_path = os.path.join(this_dir, os.path.basename(that_path))
-            if this_path not in this_paths:
-                with open(this_path, 'wb') as f:
-                    metadata, res = self.client.files_download(that_path)
-                    f.write(res.content)
+            if ignore_ext:
+                exists = False
+                for t in this_paths:
+                    if re.match('^' + this_path + '\.', t):
+                        exists = True
+                if not exists:
+                    with open(this_path, 'wb') as f:
+                        metadata, res = self.client.files_download(that_path)
+                        f.write(res.content)
+            else:
+                if this_path not in this_paths:
+                    with open(this_path, 'wb') as f:
+                        metadata, res = self.client.files_download(that_path)
+                        f.write(res.content)
 
     def exists(self, that_path):
         try:
