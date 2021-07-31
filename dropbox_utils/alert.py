@@ -19,7 +19,7 @@ if __name__ == '__main__':
         config = json.load(f)
 
     now = datetime.datetime.now()
-    target_date = now - datetime.timedelta(hours=1)
+    target_date = now - datetime.timedelta(hours=config['offset_hour'])
     file = target_date.strftime(config['name_format'])
 
     backup_dirs = config['backup_dirs']
